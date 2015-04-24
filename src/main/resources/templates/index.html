@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+           
+    <script data-main="js/app" src="../static/js/libs/require.js" th:src="@{/js/libs/require.js}"></script>
+     
+    
+    
+</head>
+<body>
+	hello
+ 	<div id="app" class="container">
+ 		<div id="menu">
+ 		</div>
+ 		<div id="content">
+ 		</div>
+ 		<div id="filter">
+ 		</div> 	
+    </div>
+    
+    
+    <div id="chart1"></div>
+    
+    <script type="text/template" id="tpl_filter">
+		<a href="#/creazy">Active</a>
+		<a href="#/active">Active</a>
+	</script>
+    
+    
+	<script type="text/template" id="tpl_main_content">
+	<div id="main_content">
+		<div class="user-list"></div>
+
+		<div class="user-details"></div>
+
+		<div class="stats-container"></div>
+	</div>
+	</script>
+
+
+	<script type="text/template" id="tpl_user_item">
+		<a class="name" href="#">{{name}}</a>
+	</script>
+	
+	<script type="text/template" id="tpl_doc_item">
+		<a class="name" href="#">{{name}} ({{id}})</a>
+	</script>
+	
+	<script type="text/template" id="tpl_user_details">		
+		<ul>
+			<li><strong>Name:</strong> {{name}}</li>
+			<li><strong>Email:</strong> {{email}}</li>
+			<li><strong>Phone:</strong> {{phone}}</li>
+			<li><strong>Twitter:</strong> {{twitter}}</li>
+		</ul>
+	</script>
+	
+	<script type="text/template" id="tpl_doc_details">		
+		<ul>
+			<li><strong>Name:</strong> {{name}}</li>
+			<li><strong>ID:</strong> {{id}}</li>
+			<li><strong>Price:</strong> {{price}}</li>			
+		</ul>
+	</script>
+	
+	<script type="text/template" id="tpl_stats_tpl">
+		<div id="stats">
+			<ul>
+				<li><strong>Min</strong>: {{Object.keys(this)}} </li>				
+				
+			</ul>
+		</div>		
+	</script>
+  
+    <script>
+		//$(function () {			
+		//	app.start();
+		//});
+	</script>
+</body>
+</html>
