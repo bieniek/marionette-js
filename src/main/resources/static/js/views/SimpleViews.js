@@ -17,5 +17,13 @@ define(['backbone', 'marionette'], function(Backbone, Marionette) {
 		}
 	});
 	
+	SimpleViews.Hello = Backbone.Marionette.ItemView.extend({		
+		template : _.template('Hello !!!!'),
+		
+		onRender: function () {
+			//this.$el.html('hello___');
+		}
+	});
+	
 	return SimpleViews;
 });

@@ -1,5 +1,5 @@
-define(['jquery', 'underscore', 'backbone', 'marionette', 'main', 'layout/Main', 'controllers/Main', 'routers/Router'], 
-		function($, _, Backbone, Marionette, Main, MainLayout, MainController, Router) {
+define(['jquery', 'underscore', 'backbone', 'marionette', 'main', 'layout/Main', 'controllers/Main', 'controllers/Doc', 'routers/Router'], 
+		function($, _, Backbone, Marionette, Main, MainLayout, MainController, DocController, Router) {
 			
 	var AppScaffold = Marionette.Application.extend({		
 		setRootLayout: function() {
@@ -13,14 +13,24 @@ define(['jquery', 'underscore', 'backbone', 'marionette', 'main', 'layout/Main',
 		app.setRootLayout();				
 		Backbone.history.start();
 				
-		var controller = new MainController();		
-		controller.router = new Router({
-			controller: controller
+		var controller = new MainController();
+		controller.start(this);
+		
+		var dc = new DocController();
+		dc.start(this);
+		
+		var router = new Router({
+			controller: _.extend({}, controller, dc)
 		});
 		
-		console.log('Router', controller.router);
+//		var controller = new MainController();		
+//		controller.router = new Router({
+//			controller: controller
+//		});
 		
-		controller.start(this);
+//		console.log('Router', controller.router);
+		
+		
 		
 		console.log('Application started');
 	});
