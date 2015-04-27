@@ -19,18 +19,10 @@ define(['jquery', 'underscore', 'backbone', 'marionette', 'main', 'layout/Main',
 		var dc = new DocController();
 		dc.start(this);
 		
+		
 		var router = new Router({
 			controller: _.extend({}, controller, dc)
-		});
-		
-//		var controller = new MainController();		
-//		controller.router = new Router({
-//			controller: controller
-//		});
-		
-//		console.log('Router', controller.router);
-		
-		
+		});			
 		
 		console.log('Application started');
 	});
