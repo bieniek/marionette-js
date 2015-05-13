@@ -9,6 +9,6 @@ import org.springframework.boot.autoconfigure.solr.SolrAutoConfiguration;
 @EnableAutoConfiguration(exclude=SolrAutoConfiguration.class)
 public class App {
 	public static void main(String[] args) throws Exception {
-        SpringApplication.run(App.class, args);
-    }
+        SpringApplication.run(App.class, args);                      
+    }	
 }
