@@ -2,7 +2,7 @@
 
 ## Marionette js Lab
 
-Simple project for getting started with Marionette JS staff.
+Simple project for getting started with Marionette JS stuff.
 
 Usage of:
 
