@@ -23,5 +23,9 @@ requirejs.config({
 	}
 });
 
-requirejs(['main']);
-
+define(['main'], function(app) {
+	console.log('app ', app);
+	app.start();
+	
+	Backbone.Wreqr.radio.channel('global').vent.trigger('ui:show_shelf');
+});

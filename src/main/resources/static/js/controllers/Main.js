@@ -4,6 +4,7 @@ define(['backbone', 'marionette', 'views/SimpleViews', 'views/HeaderView', 'view
 	var MainController = function() { // Marionette.Controller.extend({
 		this.initialize = function () {
 			console.log('Controller initialized');
+			
 		};
 		
 		this.start = function(app) {
@@ -24,7 +25,12 @@ define(['backbone', 'marionette', 'views/SimpleViews', 'views/HeaderView', 'view
 			console.log('showview');
 			var view = new SimpleViews.Creazy();
 			view.render();
-		}
+		};
+		
+		this.hello = function () {					
+			console.log('route hello');
+			Backbone.Wreqr.radio.channel('global').vent.trigger('ui:show_shelf');
+		};
 	} //);
 	
 	

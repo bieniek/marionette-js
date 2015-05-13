@@ -11,7 +11,7 @@ define(['backbone', 'marionette', 'views/SimpleViews', 'views/HeaderView', 'view
 		}
 		
 		//response to routs - see router;
-		this.hello = function () {			
+		this.hello2 = function () {			
 			console.log('route hello');
 			this.app.root.getRegion('content').show(new SimpleViews.Hello());
 		};

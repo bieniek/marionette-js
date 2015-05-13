@@ -4,9 +4,9 @@ define(['backbone', 'marionette'], function(Backbone, Marionette) {
 		appRoutes: {
 			//'hello': 'hello',
 			//'active': 'filterItems',
-			//'creazy': 'filterItems'
-			"": "filterItems",
-			"index": "showView"
+			//'creazy': 'filterItems'			
+			"index": "showView",
+			"say_hello": "hello"
 		}
 	});
 	
