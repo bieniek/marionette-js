@@ -20,7 +20,14 @@ define(['backbone', 'marionette', 'views/SimpleViews', 'views/HeaderView', 'view
 			this.app.root.getRegion('content').show(new SimpleViews.Creazy());
 		};
 	
+		this.showView = function() {
+			console.log('showview');
+			var view = new SimpleViews.Creazy();
+			view.render();
+		}
 	} //);
+	
+	
 	
 	return MainController;
 })

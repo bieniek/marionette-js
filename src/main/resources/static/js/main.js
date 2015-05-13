@@ -1,31 +1,42 @@
-define(['jquery', 'underscore', 'backbone', 'marionette', 'main', 'layout/Main', 'controllers/Main', 'controllers/Doc', 'routers/Router'], 
-		function($, _, Backbone, Marionette, Main, MainLayout, MainController, DocController, Router) {
-			
-	var AppScaffold = Marionette.Application.extend({		
-		setRootLayout: function() {
-		    this.root = new MainLayout();
-		}	
-	});
-	
-	var app = new AppScaffold();
-	
-	app.on('start', function() {		
-		app.setRootLayout();				
-		Backbone.history.start();
+define(['jquery', 'underscore', 'backbone', 'marionette', 'main', 'layout/Main', 'layout/SubMain', 'controllers/Main', 'controllers/Doc', 
+        'routers/Router',
+        'views/SimpleViews'], 
+		function($, _, Backbone, Marionette, Main, MainLayout, SubMainLayout, MainController, DocController, Router, SimpleViews) {
 				
-		var controller = new MainController();
-		controller.start(this);
+	var app = new Marionette.Application();
+	
+	app.navigate = function(route,  options) {
+		console.log('router', route, options);
+	    options || (options = {});
+	    Backbone.history.navigate(route, options);
+	 };
+	
+	app.on('start', function() {				
+		var mainRouter = new Router({controller:new MainController()});		
 		
-		var dc = new DocController();
-		dc.start(this);
+		var layout = new MainLayout();								
+		layout.render();
 		
-		
-		var router = new Router({
-			controller: _.extend({}, controller, dc)
-		});			
-		
-		console.log('Application started');
+		//menu stays with us all the time!
+		layout.getRegion('menu').show(new SimpleViews.Creazy());				
+				
+		//store layout in app
+		app.layout = layout;
+		console.log('started ....');				
 	});
-		
+	
+	var channel = Backbone.Wreqr.radio.channel('global');
+	
+	//Change layouts on events.
+	channel.vent.on('ui:show_shelf', function() {
+		app.layout.getRegion('content').show(new SubMainLayout());
+	});
+	
+	channel.vent.on('ui:hide_shelf', function() {
+		app.layout.getRegion('content').show(new SimpleViews.Hello());
+	});
+	
+	
 	app.start();
+	
 });
